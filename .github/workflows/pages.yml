@@ -1,0 +1,70 @@
+name: Publish TYAGA demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Prepare static site for the repository URL
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import shutil
+
+          source = Path('tyaga-demo/dist')
+          site = Path('_site')
+          shutil.copytree(source, site)
+
+          index = site / 'index.html'
+          index.write_text(index.read_text().replace('src="/', 'src="./').replace('href="/', 'href="./'))
+
+          app = site / 'app.js'
+          text = app.read_text()
+          anchor = 'const e = escape;'
+          assert text.count(anchor) == 1, 'Unexpected app.js format'
+          helper = r"""const e = escape;
+          // Keep canonical photo values in saved data; resolve bundled images below the site directory.
+          const imageSrc = value => e(typeof value === 'string' && /^\/assets\/[a-z0-9_-]+\.webp$/.test(value) ? '.' + value : value);"""
+          text = text.replace(anchor, helper, 1)
+          text, count = re.subn(r'(<img\b[^>]*?\bsrc="\$\{)e\(', r'\1imageSrc(', text)
+          assert count == 9, f'Unexpected image template count: {count}'
+          app.write_text(text.replace('src="/assets/', 'src="./assets/'))
+          (site / '.nojekyll').touch()
+          assert (site / 'runtime/pyodide.asm.wasm').is_file()
+          assert (site / 'server-mode.js').read_text().strip() == 'window.TYAGA_SERVER = false;'
+          PY
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
