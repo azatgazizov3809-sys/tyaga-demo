@@ -1,0 +1,125 @@
+/* The approved graphite and turquoise direction, applied to every existing view. */
+:root { color-scheme: light; }
+.theme-toggle { flex: 0 0 44px; }
+.theme-toggle span { display: inline-flex; }
+.theme-toggle .theme-icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-icon-sun { display: inline-flex; }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #132025;
+  --paper: #1c2b30;
+  --ink: #f0f5f6;
+  --muted: #b0c1ca;
+  --line: #39515c;
+  --teal: #54d8cc;
+  --teal-dark: #8ae6dc;
+  --mint: #153e40;
+  --red: #f7899f;
+  --amber: #f1c579;
+  --shadow: 0 8px 32px #00000030;
+  --field: #17262c;
+  --surface-hover: #253b42;
+  --surface-soft: #25363e;
+  --quiet-line: #2d424c;
+  --action: #087f78;
+  --action-hover: #096f69;
+  --success-bg: #124448;
+  --success-ink: #9fece4;
+  --warning-bg: #3d3220;
+  --warning-line: #6c5631;
+  --error-bg: #412831;
+  --error-line: #865363;
+}
+:root[data-theme="dark"] .logo { color: var(--ink); }
+:root[data-theme="dark"] :is(.header,.vehicle-card,.empty,.my-ad,.saved-card,.messages-layout,.chat-row,.compare-table,.dealer-card,.asset-picker button,.sticky-actions,.modal,.modal-head,.modal .form-actions,.form-actions,.search-prompt,.demo-scenario,.category,.tab,.icon-btn) {
+  background: var(--paper);
+}
+:root[data-theme="dark"] :is(.panel,.vehicle-card,.empty,.my-ad,.category,.tab,.upload-photo,.asset-picker button) {
+  border-color: var(--line);
+}
+:root[data-theme="dark"] :is(input,select,textarea) { background: var(--field); }
+:root[data-theme="dark"] :is(input,textarea)::placeholder { color: #96aeb9; opacity: 1; }
+:root[data-theme="dark"] :is(input,textarea):autofill {
+  -webkit-text-fill-color: var(--ink);
+  box-shadow: 0 0 0 100px var(--field) inset;
+  caret-color: var(--ink);
+}
+:root[data-theme="dark"] .btn { background: var(--paper); }
+:root[data-theme="dark"] .btn:hover { background: var(--surface-hover); border-color: #61978f; }
+:root[data-theme="dark"] .btn.primary { background: var(--action); border-color: #13a69a; color: #fff; }
+:root[data-theme="dark"] .btn.primary:hover { background: var(--action-hover); border-color: var(--teal); }
+:root[data-theme="dark"] .btn.soft { background: var(--mint); color: var(--teal-dark); border-color: #2c5c5a; }
+:root[data-theme="dark"] .btn.plain { background: transparent; border-color: transparent; }
+:root[data-theme="dark"] .btn.plain:hover { background: var(--surface-hover); }
+:root[data-theme="dark"] .btn.danger:hover { background: var(--error-bg); border-color: var(--error-line); }
+:root[data-theme="dark"] :is(.icon-btn:hover,.icon-btn.selected,.tab.active,.category.active,.segment input:checked+span) {
+  background: var(--mint);
+  color: var(--teal-dark);
+  border-color: var(--teal);
+}
+:root[data-theme="dark"] .category:hover { border-color: var(--teal); }
+:root[data-theme="dark"] .demo-bar { background: #102d30; color: #a4c5c5; }
+:root[data-theme="dark"] .demo-bar button { color: var(--teal-dark); }
+:root[data-theme="dark"] .badge { background: #c92e50; color: #fff; }
+:root[data-theme="dark"] :is(.avatar,.count,.status,.wizard-step span) { background: var(--surface-soft); }
+:root[data-theme="dark"] .status { color: var(--muted); }
+:root[data-theme="dark"] .status.active { background: var(--success-bg); color: var(--success-ink); }
+:root[data-theme="dark"] .status.pending { background: var(--warning-bg); color: var(--amber); }
+:root[data-theme="dark"] .status.rejected { background: var(--error-bg); color: #ffafbf; }
+:root[data-theme="dark"] .status.sold { background: #293c32; color: #b4d8b9; }
+:root[data-theme="dark"] :is(.spec-line,.location,.compare-card-btn,.footnote,.modal-notice time,.bubble time) { color: var(--muted); }
+:root[data-theme="dark"] .location svg { color: #88c8c4; }
+:root[data-theme="dark"] :is(.compare-card-btn.on,.chip) { color: var(--teal-dark); background: var(--mint); }
+:root[data-theme="dark"] :is(.vehicle-photo,.gallery,.thumbs button,.my-ad .mini-photo,.photo-placeholder) { background: #25363e; }
+:root[data-theme="dark"] .photo-placeholder { color: var(--muted); }
+:root[data-theme="dark"] .favorite-button { background: #17282edf; color: #eef6f8; border: 1px solid #58707c; }
+:root[data-theme="dark"] .favorite-button.on { color: var(--teal); }
+:root[data-theme="dark"] .favorite-button:hover { background: #173e40; }
+:root[data-theme="dark"] .gallery-tag { background: #17282eef; color: var(--ink); }
+:root[data-theme="dark"] .empty-icon { background: var(--mint); }
+:root[data-theme="dark"] .notice-box { background: #163638; border-color: #32645e; color: #b5e3d8; }
+:root[data-theme="dark"] .notice-box.amber { background: var(--warning-bg); border-color: var(--warning-line); color: var(--amber); }
+:root[data-theme="dark"] :is(.notice-box.red,.form-error) { background: var(--error-bg); border-color: var(--error-line); color: #ffb4c5; }
+:root[data-theme="dark"] .field-error { background: #34252e; border-color: #d17a90; }
+:root[data-theme="dark"] :is(.account-nav a:hover,.demo-scenario:hover) { background: var(--surface-hover); }
+:root[data-theme="dark"] .account-nav a.active { background: var(--mint); color: var(--teal-dark); }
+:root[data-theme="dark"] :is(.spec-item,.ad-actions,.saved-controls,.profile-notification,.session,.chat-row,.chat-ad,.demo-reply,.modal-head) { border-color: var(--quiet-line); }
+:root[data-theme="dark"] .switch-track { background: #576b75; }
+:root[data-theme="dark"] .switch input:checked+.switch-track { background: var(--action); }
+:root[data-theme="dark"] .chat-row.active { background: var(--mint); }
+:root[data-theme="dark"] .chat-scroll { background: #142228; }
+:root[data-theme="dark"] .bubble>div { background: #293d48; }
+:root[data-theme="dark"] .bubble.mine>div { background: #164846; }
+:root[data-theme="dark"] .demo-reply { background: #18282e; }
+:root[data-theme="dark"] .chat-attachment { background: var(--mint); }
+:root[data-theme="dark"] :is(.compare-table th,.compare-table td) { border-color: var(--quiet-line); }
+:root[data-theme="dark"] :is(.compare-table th:first-child,.compare-table td:first-child) { background: #17272d; }
+:root[data-theme="dark"] .compare-table .different { background: #193337; }
+:root[data-theme="dark"] :is(.dealer-card .avatar,.dealer-head .avatar,.wizard-step.active span) { background: var(--mint); color: var(--teal-dark); }
+:root[data-theme="dark"] .upload-target { background: #183330; border-color: #62a49a; }
+:root[data-theme="dark"] :is(.upload-photo>button,.upload-photo>span) { background: #17282ef2; color: var(--ink); }
+:root[data-theme="dark"] .modal-backdrop { background: #040b10b8; }
+:root[data-theme="dark"] .modal { box-shadow: 0 20px 90px #00000070; }
+:root[data-theme="dark"] :is(.lightbox.modal,.lightbox .modal-head) { background: #0d2029; color: #fff; }
+:root[data-theme="dark"] .lightbox .modal-head .icon-btn { background: transparent; color: #fff; border-color: #587483; }
+:root[data-theme="dark"] .lightbox .arrow { background: #17282ef2; color: #fff; border: 1px solid #587483; }
+:root[data-theme="dark"] .toast { background: #1c504b; border: 1px solid #397f75; color: #fff; }
+:root[data-theme="dark"] .toast.error { background: #79263e; border-color: #b85b73; }
+:root[data-theme="dark"] .boot progress { accent-color: var(--teal); }
+
+@media(max-width:700px) {
+  .header .logo { flex-shrink: 0; }
+  .header-actions { min-width: 0; }
+  .header-actions>.mobile-location { min-width: 0; padding: 0; }
+  .header-location-name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .header-actions>.theme-toggle { display: inline-flex; flex-shrink: 0; width: 44px; height: 44px; }
+  :root[data-theme="dark"] .bottom-nav { background: #1c2b30f7; }
+  :root[data-theme="dark"] :is(.bottom-nav>a,.bottom-nav>button) { color: var(--muted); }
+  :root[data-theme="dark"] .bottom-nav .active { color: var(--teal); }
+  :root[data-theme="dark"] .bottom-nav .add-circle { background: var(--action); color: #fff; }
+  :root[data-theme="dark"] :is(.seller-box .contact-stack,.account-mobile-menu a) { background: var(--paper); }
+  :root[data-theme="dark"] .account-mobile-menu a.active { background: var(--mint); color: var(--teal-dark); }
+  :root[data-theme="dark"] .detail-grid .seller-box { background: transparent; }
+}

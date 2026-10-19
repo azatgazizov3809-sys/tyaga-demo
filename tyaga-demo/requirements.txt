@@ -1,0 +1,1 @@
+# Python 3.10+; all server dependencies are in the standard library.
